@@ -3,6 +3,7 @@ import ReactMapGL, { Marker, Popup } from "react-map-gl";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import Nav from "./Nav";
+import Message from "./message";
 
 function App() {
   const [viewport, setViewport] = useState({
@@ -37,6 +38,7 @@ function App() {
 
   return (
     <div style={{ height: "100vh", width: "100%" }}>
+      <Message />
       <Nav setStyle={setStyle} />
       <ReactMapGL
         {...viewport}
