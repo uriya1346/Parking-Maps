@@ -2,6 +2,7 @@ import "./app.css";
 import ReactMapGL, { Marker, Popup } from "react-map-gl";
 import { useEffect, useState } from "react";
 import axios from 'axios'
+import Nav from "./Nav";
 
 function App() {
   const [viewport, setViewport] = useState({
@@ -10,6 +11,7 @@ function App() {
     zoom: 12.7,
   });
   const [ar, setAr] = useState([]);
+  const [style,setStyle] = useState("mapbox://styles/mapbox/streets-v11")
   const [selectedParking, setSelectedParking] = useState(null);
 
   useEffect(() => {
@@ -24,7 +26,7 @@ function App() {
     return () => {
       window.removeEventListener("keydown", listener);
     };
-  }, []);
+  }, [style]);
 
   // API fron gov.il
   const doApi = async () => {
@@ -35,13 +37,14 @@ function App() {
 
   return (
     <div style={{ height: "100vh", width: "100%" }}>
+      <Nav setStyle={setStyle}/>
       <ReactMapGL
         {...viewport}
         mapboxApiAccessToken="pk.eyJ1IjoiZ3VyZ2VuOCIsImEiOiJjbDAya2p3YWQwNGI3M2txcHQ4amF0NW1tIn0.LifP-AAkjEyrty0gLCW53w"
         width="100%"
         height="100%"
         transitionDuration="200"
-        mapStyle="mapbox://styles/gurgen8/cl02lbqvb000p14lakcg8t0s6"
+        mapStyle={style}
         onViewportChange={(viewport) => setViewport(viewport)}
       >
         {ar.map((item) => {
