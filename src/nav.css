@@ -25,6 +25,6 @@ nav button:hover{
   background: rgba(0, 0, 0, 0.3);
 }
 nav button.active{
-  background: #4db5ff;
+  background: #e5e6ea;
   color: #1f1f38;
 }

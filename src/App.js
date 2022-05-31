@@ -23,7 +23,7 @@ function App() {
     };
     window.addEventListener("keydown", listener);
 
-    return () => {
+    retsurn () => {
       window.removeEventListener("keydown", listener);
     };
   }, [style]);

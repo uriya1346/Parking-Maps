@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
-import {AiOutlineHome} from 'react-icons/ai'
-import {AiOutlineUser} from 'react-icons/ai'
-import {BiBook} from 'react-icons/bi'
-import {RiServiceLine} from 'react-icons/ri'
+import {FaMapMarkedAlt} from 'react-icons/fa'
+import {FaSatelliteDish} from 'react-icons/fa'
+import {BsMoon} from 'react-icons/bs'
 import './nav.css'
 
 function Nav(props){
@@ -14,23 +13,17 @@ function Nav(props){
           setActiveNav('#')
           setStyle("mapbox://styles/mapbox/streets-v11")
         }
-        } className={activeNav === '#' ? 'active' : ''}><AiOutlineHome/></button>
+        } className={activeNav === '#' ? 'active' : ''}><FaMapMarkedAlt/></button>
         <button onClick={() => {
             setActiveNav('#satellite')
             setStyle("mapbox://styles/gurgen8/cl02lbqvb000p14lakcg8t0s6")
         }
-        } className={activeNav === '#satellite' ? 'active' : ''}><AiOutlineUser/></button>
+        } className={activeNav === '#satellite' ? 'active' : ''}><FaSatelliteDish/></button>
         <button onClick={() => {
             setActiveNav('#dark')
             setStyle("mapbox://styles/mapbox/dark-v10")
         }
-        } className={activeNav === '#dark' ? 'active' : ''}><BiBook/></button>
-        <button 
-    onClick={() => {
-        setActiveNav('#light')
-        setStyle("mapbox://styles/mapbox/light-v10")
-    }
-    } className={activeNav === '#light' ? 'active' : ''}><RiServiceLine/></button>
+        } className={activeNav === '#dark' ? 'active' : ''}><BsMoon/></button>
     </nav>
     )
 }
