@@ -28,7 +28,7 @@ function App() {
     };
   }, [style]);
 
-  // API fron gov.il
+  //API fron gov.il
   const doApi = async () => {
     let url = "https://api.tel-aviv.gov.il/parking/stations";
     let resp = await axios.get(url);
