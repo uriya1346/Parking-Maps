@@ -1,7 +1,7 @@
 import "./app.css";
 import ReactMapGL, { Marker, Popup } from "react-map-gl";
 import { useEffect, useState } from "react";
-import axios from 'axios'
+import axios from "axios";
 import Nav from "./Nav";
 
 function App() {
@@ -11,11 +11,11 @@ function App() {
     zoom: 12.7,
   });
   const [ar, setAr] = useState([]);
-  const [style,setStyle] = useState("mapbox://styles/mapbox/streets-v11")
+  const [style, setStyle] = useState("mapbox://styles/mapbox/streets-v11");
   const [selectedParking, setSelectedParking] = useState(null);
 
   useEffect(() => {
-    doApi()
+    doApi();
     const listener = (e) => {
       if (e.key === "Escape") {
         setSelectedParking(null);
@@ -23,7 +23,7 @@ function App() {
     };
     window.addEventListener("keydown", listener);
 
-    retsurn () => {
+    return () => {
       window.removeEventListener("keydown", listener);
     };
   }, [style]);
@@ -32,12 +32,12 @@ function App() {
   const doApi = async () => {
     let url = "https://api.tel-aviv.gov.il/parking/stations";
     let resp = await axios.get(url);
-    setAr(resp.data)
-  }
+    setAr(resp.data);
+  };
 
   return (
     <div style={{ height: "100vh", width: "100%" }}>
-      <Nav setStyle={setStyle}/>
+      <Nav setStyle={setStyle} />
       <ReactMapGL
         {...viewport}
         mapboxApiAccessToken="pk.eyJ1IjoiZ3VyZ2VuOCIsImEiOiJjbDAya2p3YWQwNGI3M2txcHQ4amF0NW1tIn0.LifP-AAkjEyrty0gLCW53w"
@@ -74,7 +74,7 @@ function App() {
               setSelectedParking(null);
             }}
           >
-            <div className="info text-center p-2" style={{width:"50vh"}}>
+            <div className="info text-center p-2" style={{ width: "50vh" }}>
               <h1>{selectedParking.Name}</h1>
               <h3>{selectedParking.Address}</h3>
               <h5>{selectedParking.FeeComments}</h5>
